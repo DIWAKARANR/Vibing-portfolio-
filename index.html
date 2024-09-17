@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diwakaran  R - Rainbow Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background: #000;
+            color: #fff;
+        }
+
+        .rainbow-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+            background-size: 1800% 1800%;
+            animation: rainbow 18s ease infinite;
+        }
+
+        @keyframes rainbow { 
+            0% { background-position: 0% 82% }
+            50% { background-position: 100% 19% }
+            100% { background-position: 0% 82% }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        header, section, footer {
+            background: rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: skillPulse 2s infinite;
+        }
+
+        @keyframes skillPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Existing Animations */
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes spinGrow {
+            0% { transform: rotate(0deg) scale(0.8); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(0.8); }
+        }
+
+        @keyframes glowText {
+            0%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0%); }
+            15% { transform: translateX(-25%) rotate(-5deg); }
+            30% { transform: translateX(20%) rotate(3deg); }
+            45% { transform: translateX(-15%) rotate(-3deg); }
+            60% { transform: translateX(10%) rotate(2deg); }
+            75% { transform: translateX(-5%) rotate(-1deg); }
+        }
+
+        @keyframes borderRainbow {
+            0% { border-color: red; }
+            14% { border-color: orange; }
+            28% { border-color: yellow; }
+            42% { border-color: green; }
+            57% { border-color: blue; }
+            71% { border-color: indigo; }
+            85% { border-color: violet; }
+            100% { border-color: red; }
+        }
+
+        /* Existing New Animations */
+        @keyframes fallDown {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes rotateColor {
+            0% { transform: rotate(0deg); background: red; }
+            14% { background: orange; }
+            28% { background: yellow; }
+            42% { background: green; }
+            57% { background: blue; }
+            71% { background: indigo; }
+            85% { background: violet; }
+            100% { transform: rotate(360deg); background: red; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Falling Rainbow Drops */
+        .rainbow-drop {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fallDown 5s linear infinite, rotateColor 5s linear infinite;
+        }
+
+        /* Apply Animations */
+        h1 { animation: glowText 2s infinite, floatText 3s infinite, heartbeat 1.5s infinite; }
+        h2 { animation: spinGrow 5s infinite, glowText 3s infinite; }
+        .skill:nth-child(odd) { animation: wobble 3s infinite, heartbeat 2s infinite; }
+        .skill:nth-child(even) { animation: borderRainbow 5s infinite, rotateColor 3s infinite; border: 2px solid; }
+        footer { animation: floatText 4s infinite, glowText 2s infinite; }
+        #playButton { 
+            animation: spinGrow 3s infinite, glowText 2s infinite; 
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Existing Shining Animation */
+        .shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Apply shine effect to sections */
+        header, section, footer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* New Extra Animations */
+        @keyframes rainbowText {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        @keyframes rotateIn {
+            from { transform: rotate(0deg) scale(0); opacity: 0; }
+            to { transform: rotate(360deg) scale(1); opacity: 1; }
+        }
+
+        /* Apply New Animations */
+        p { animation: rainbowText 5s infinite; }
+        .skill { animation: bounce 2s infinite; }
+        section { animation: rotateIn 1s ease-out; }
+
+        /* Enhanced Rainbow Background */
+        .rainbow-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+
+        /* Disco Ball Styles and Animations */
+        .disco-ball {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, #888);
+            box-shadow: 
+                inset 0 0 10px #fff,
+                inset 10px 0 20px #f0f,
+                inset -10px 0 20px #0ff,
+                inset 10px 0 30px #f0f,
+                inset -10px 0 30px #0ff,
+                0 0 10px #fff,
+                -5px 0 20px #f0f,
+                5px 0 20px #0ff;
+            animation: rollAndShine 10s infinite linear;
+            z-index: 1000;
+        }
+
+        @keyframes rollAndShine {
+            0% { transform: translateX(-50px) rotate(0deg); }
+            50% { transform: translateX(calc(100vw + 50px)) rotate(1800deg); }
+            100% { transform: translateX(-50px) rotate(3600deg); }
+        }
+
+        /* Star Styles and Animations */
+        .star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            z-index: 999;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="rainbow-background"></div>
+    <div class="container">
+        <header>
+            <div class="shine"></div>
+            <h1>Diwakaran R</h1>
+            <p>Welcome to my vibrant rainbow portfolio!</p>
+        </header>
+        
+        <section>
+            <div class="shine"></div>
+            <h2>About Me</h2>
+            <p>I'm a creative developer who loves to bring color and life to the digital world!</p>
+        </section>
+        
+        <section>
+            <div class="shine"></div>
+            <h2>My Skills</h2>
+            <div class="skills">
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React</div>
+                <div class="skill">Java</div>
+                <div class="skill">Python</div>
+                <div class="skill">Artificial Intelligence</div>
+                <div class="skill">Machine Learning and Ms Excel</div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="shine"></div>
+            <p>&copy; 2024 Diwakaran R. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <button id="playButton">🎵</button>
+
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const playButton = document.getElementById("playButton");
+
+        playButton.addEventListener("click", function() {
+            if (music.paused) {
+                music.play();
+                playButton.textContent = "🔊";
+            } else {
+                music.pause();
+                playButton.textContent = "🎵";
+            }
+        });
+
+        // Create falling rainbow drops
+        function createRainbowDrop() {
+            const drop = document.createElement('div');
+            drop.classList.add('rainbow-drop');
+            drop.style.left = Math.random() * window.innerWidth + 'px';
+            drop.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random duration between 2-5s
+            document.body.appendChild(drop);
+
+            // Remove the drop after animation completes
+            drop.addEventListener('animationend', function() {
+                drop.remove();
+            });
+        }
+
+        // Create drops at regular intervals
+        setInterval(createRainbowDrop, 200);
+
+        // Create disco balls
+        function createDiscoBall() {
+            const ball = document.createElement('div');
+            ball.classList.add('disco-ball');
+            ball.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(ball);
+
+            // Remove the ball after animation completes
+            ball.addEventListener('animationiteration', function() {
+                ball.remove();
+                createDiscoBall(); // Create a new ball
+            });
+        }
+
+        // Create initial disco balls
+        for (let i = 0; i < 5; i++) {
+            createDiscoBall();
+        }
+
+        // Create stars
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.animation = `twinkle ${Math.random() * 2 + 1}s infinite`;
+            document.body.appendChild(star);
+        }
+
+        // Create initial stars
+        for (let i = 0; i < 50; i++) {
+            createStar();
+        }
+    </script>
+</body>
+</html>
